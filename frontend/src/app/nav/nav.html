@@ -1,0 +1,51 @@
+<nav class="nav">
+
+  <!-- Main bar -->
+  <div class="container nav__inner">
+
+    <a class="nav__logo" href="/">
+      <img src="/ways_logo_full_white.png" alt="WAYS — Hydration On The Go" height="32">
+    </a>
+
+    <ul class="nav__links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#b2b">B2B</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav__actions">
+      <a class="nav__cta" href="#products">Stay up to date!</a>
+
+      <!-- Hamburger — visible on mobile only -->
+      <button class="nav__hamburger" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen()">
+        @if (menuOpen()) {
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        } @else {
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="7" x2="21" y2="7"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="17" x2="21" y2="17"/>
+          </svg>
+        }
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Mobile menu — shown when menuOpen() is true -->
+  @if (menuOpen()) {
+    <div class="nav__mobile">
+      <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#b2b">B2B</a></li>
+      <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  }
+
+</nav>

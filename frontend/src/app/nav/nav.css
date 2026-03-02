@@ -1,0 +1,112 @@
+/* Sticky bar that stays at top while scrolling */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-deep-teal);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.5rem;
+}
+
+/* ---- Logo ---- */
+.nav__logo {
+  display: flex;
+  align-items: center;
+}
+
+/* ---- Desktop links ---- */
+.nav__links {
+  display: none; /* hidden on mobile, shown via media query below */
+  list-style: none;
+  gap: var(--space-lg);
+}
+
+.nav__links a {
+  color: var(--color-white);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  opacity: 0.8;
+  transition: opacity var(--transition-base);
+}
+
+.nav__links a:hover {
+  opacity: 1;
+}
+
+/* ---- Right-side actions (CTA + hamburger) ---- */
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.nav__cta {
+  background-color: var(--color-warm-sand);
+  color: var(--color-deep-teal);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-pill);
+  transition: background-color var(--transition-base);
+  white-space: nowrap;
+}
+
+.nav__cta:hover {
+  background-color: var(--color-tan);
+}
+
+/* ---- Hamburger button ---- */
+.nav__hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-white);
+  padding: 0.25rem;
+}
+
+/* ---- Mobile dropdown ---- */
+.nav__mobile {
+  background-color: var(--color-deep-teal);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--space-md) var(--space-sm);
+}
+
+.nav__mobile ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.nav__mobile a {
+  color: var(--color-white);
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.85;
+  transition: opacity var(--transition-base);
+}
+
+.nav__mobile a:hover {
+  opacity: 1;
+}
+
+/* ---- Desktop breakpoint ---- */
+@media (min-width: 768px) {
+  .nav__links {
+    display: flex; /* show links */
+  }
+
+  .nav__hamburger {
+    display: none; /* hide hamburger */
+  }
+}
