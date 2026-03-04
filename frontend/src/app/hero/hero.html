@@ -1,0 +1,56 @@
+<section class="hero">
+
+  <!-- ── Left pane ── -->
+  <div class="hero__left">
+    <span class="hero__badge">💧 Premium Electrolytes</span>
+    <h1 class="hero__title">Hydration<br>On The Go</h1>
+    <p class="hero__sub">
+      Premium powder electrolytes in convenient sachets. Perfect hydration solution for your active lifestyle. Just mix, sip, and keep moving.
+    </p>
+
+    @if (!submitted()) {
+      <form class="hero__form" (submit)="onSubmit()">
+        <input
+          type="email"
+          class="hero__input"
+          placeholder="your@email.com"
+          (input)="onEmailInput($event)"
+          required
+        />
+        <button type="submit" class="hero__submit">Get early access</button>
+      </form>
+    } @else {
+      <p class="hero__success">You're on the list — we'll be in touch!</p>
+    }
+
+    <div class="hero__stats">
+      <div class="hero__stat"><span>100%</span><small>Natural</small></div>
+      <div class="hero__stat"><span>0g</span><small>Sugar</small></div>
+      <div class="hero__stat"><span>6+</span><small>Electrolytes</small></div>
+    </div>
+  </div>
+
+  <!-- ── Right pane ── -->
+  <div class="hero__right">
+    <div class="hero__visual">
+
+      <img
+        class="hero__product"
+        src="images/box-orange-rush.jpg"
+        alt="WAYS® Orange Rush — box of 10 sachets"
+      />
+
+      @for (benefit of benefits; track benefit.label) {
+        <div class="hero__chip hero__chip--{{ benefit.pos }}">
+          <span class="hero__chip-icon">{{ benefit.icon }}</span>
+          <div class="hero__chip-text">
+            <strong>{{ benefit.label }}</strong>
+            <p class="hero__chip-body">{{ benefit.body }}</p>
+          </div>
+        </div>
+      }
+
+    </div>
+  </div>
+
+</section>
