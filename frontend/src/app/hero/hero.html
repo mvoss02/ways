@@ -9,15 +9,28 @@
     </p>
 
     @if (!submitted()) {
-      <form class="hero__form" (submit)="onSubmit()">
-        <input
-          type="email"
-          class="hero__input"
-          placeholder="your@email.com"
-          (input)="onEmailInput($event)"
-          required
-        />
-        <button type="submit" class="hero__submit">Get early access</button>
+      <form class="hero__form" #heroForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="hero__input-wrap">
+          <input
+            type="email"
+            class="hero__input"
+            [class.hero__input--error]="emailField.invalid && emailField.touched"
+            [class.hero__input--valid]="emailField.valid && emailField.dirty"
+            placeholder="your@email.com"
+            name="email"
+            [(ngModel)]="email"
+            #emailField="ngModel"
+            required
+            pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+          />
+          @if (emailField.invalid && emailField.touched) {
+            <span class="hero__input-error">
+              @if (emailField.errors?.['required']) { Please enter your email. }
+              @else if (emailField.errors?.['pattern']) { Please enter a valid email address. }
+            </span>
+          }
+        </div>
+        <button type="submit" class="hero__submit" [disabled]="heroForm.invalid">Get early access</button>
       </form>
     } @else {
       <p class="hero__success">You're on the list — we'll be in touch!</p>
@@ -34,11 +47,25 @@
   <div class="hero__right">
     <div class="hero__visual">
 
-      <img
-        class="hero__product"
-        src="images/box-orange-rush.jpg"
-        alt="WAYS® Orange Rush — box of 10 sachets"
-      />
+      @for (product of products; track product.src) {
+        <img
+          class="hero__product"
+          [class.hero__product--active]="$index === currentIndex()"
+          [src]="product.src"
+          [alt]="product.alt"
+        />
+      }
+
+      <div class="hero__dots">
+        @for (product of products; track product.src) {
+          <button
+            class="hero__dot"
+            [class.hero__dot--active]="$index === currentIndex()"
+            (click)="currentIndex.set($index)"
+            [attr.aria-label]="product.alt"
+          ></button>
+        }
+      </div>
 
       @for (benefit of benefits; track benefit.label) {
         <div class="hero__chip hero__chip--{{ benefit.pos }}">
