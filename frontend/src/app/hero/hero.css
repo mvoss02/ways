@@ -11,7 +11,6 @@
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: calc(100dvh - 4.5rem);
   background-color: var(--color-warm-sand);
   overflow: hidden;
 }
