@@ -4,6 +4,7 @@
   top: 0;
   z-index: 100;
   background-color: var(--color-deep-teal);
+
 }
 
 .nav__inner {
@@ -99,6 +100,11 @@
 
 .nav__mobile a:hover {
   opacity: 1;
+}
+
+/* ---- Scrolled state — adds shadow when page is scrolled ---- */
+.nav--scrolled {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
 
 /* ---- Desktop breakpoint ---- */

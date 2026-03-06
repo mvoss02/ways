@@ -56,7 +56,6 @@
    ------------------------------------------------------------ */
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
   font-size: 16px;
 }
 
@@ -103,7 +102,6 @@ img, svg {
    5. Scroll snap — each section fills the viewport and snaps into place
    ------------------------------------------------------------ */
 section {
-  scroll-snap-align: start;
   scroll-margin-top: 4.5rem; /* offsets the sticky nav height */
   min-height: calc(100dvh - 4.5rem);
 }
@@ -123,3 +121,10 @@ section {
     padding-inline: var(--space-lg);
   }
 }
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
